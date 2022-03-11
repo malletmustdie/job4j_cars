@@ -1,5 +1,6 @@
 package ru.job4j.cars.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -23,11 +24,11 @@ public class CarModel {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "brand_id", foreignKey = @ForeignKey(name = "CAR_BRAND_ID_FK"))
     private CarBrand brand;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "body_id", foreignKey = @ForeignKey(name = "CAR_BODY_ID_FK"))
     private CarBody body;
 

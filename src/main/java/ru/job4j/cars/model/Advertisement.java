@@ -1,5 +1,6 @@
 package ru.job4j.cars.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -27,11 +28,11 @@ public class Advertisement {
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "model_id", foreignKey = @ForeignKey(name = "CAR_MODEL_ID_FK"))
     private CarModel model;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "USER_ID_FK"))
     private User author;
 
@@ -119,6 +120,15 @@ public class Advertisement {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Advertisement: id=%d, description=%s, created=%s",
+                id,
+                description,
+                created);
     }
 
 }

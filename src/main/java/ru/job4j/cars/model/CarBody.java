@@ -23,6 +23,13 @@ public class CarBody {
     @OneToMany(mappedBy = "body")
     private List<CarModel> models = new ArrayList<>();
 
+    public CarBody() {
+    }
+
+    public CarBody(String bodyType) {
+        this.bodyType = bodyType;
+    }
+
     public Integer getId() {
         return id;
     }

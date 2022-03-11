@@ -21,7 +21,7 @@ public class CarBrand {
     private String name;
 
     @OneToMany(mappedBy = "brand")
-    private List<CarModel> models = new ArrayList<>();
+    private final List<CarModel> models = new ArrayList<>();
 
     public CarBrand() {
     }
